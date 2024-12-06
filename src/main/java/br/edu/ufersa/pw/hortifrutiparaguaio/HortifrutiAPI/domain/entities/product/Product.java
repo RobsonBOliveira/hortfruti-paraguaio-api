@@ -1,4 +1,4 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product;
 
 
 import jakarta.persistence.*;
@@ -13,7 +13,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idproduct")
-    private int idProduct;
+    private Long idProduct;
     @Column(name = "idsalesman")
     private int idSalesMan;
     @Column(name = "name")

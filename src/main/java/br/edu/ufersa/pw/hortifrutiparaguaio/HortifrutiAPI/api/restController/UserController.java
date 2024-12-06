@@ -2,9 +2,10 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restController;
 
 
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Usuario;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.UsuarioRepository;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.User;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,20 +17,20 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private UsuarioRepository usuario;
+    private UserRepository usuario;
     @RequestMapping("/users")
-    public List<Usuario> getUsers() {
-        return (List<Usuario>) usuario.findAll();
+    public List<User> getUsers() {
+        return usuario.findAll();
     }
 
     @GetMapping("/users/{userId}")
-    public Optional<Usuario> getUserById(@PathVariable Long userId) {
+    public Optional<User> getUserById(@PathVariable Long userId) {
         return usuario.findById(userId);
     }
 
     @PostMapping("/users/post/")
-    public Usuario createUser(@PathVariable Usuario usuario) {
-        return  usuario;
+    public User createUser(@PathVariable User user) {
+        return user;
     }
 }
 

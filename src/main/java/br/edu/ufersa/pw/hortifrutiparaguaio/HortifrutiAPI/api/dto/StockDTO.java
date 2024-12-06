@@ -6,8 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDTO {
-    private long id;
-    private String email;
-    private String name;
+public class StockDTO {
+    private int idProductStock;
+    private int quantity;
 }

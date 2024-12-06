@@ -16,6 +16,8 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserRepository usuario;
+
+
     @RequestMapping("/users")
     public List<User> getUsers() {
         return usuario.findAll();

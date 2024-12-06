@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Table(name="orders")
 @Getter
 @Setter
@@ -14,10 +16,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idorder")
     private int OrderId;
-    @Column(name="idproduct")
+    @Column(name="iduser")
     private int ProductId;
-    @Column(name="quantity")
-    private int Quantity;
-    @Column(name="price")
-    private double Price;
+    @Column(name="orderdate")
+    private Date OrderDate;
 }

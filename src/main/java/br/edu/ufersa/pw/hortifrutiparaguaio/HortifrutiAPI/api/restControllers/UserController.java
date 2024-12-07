@@ -25,9 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/users/post")
-    public User createUser(@RequestBody User user) {
-        return usuario.save(user);
-    }
+    public User createUser(@RequestBody User user) {return usuario.save(user);}
 
     @PutMapping("/users/put/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {

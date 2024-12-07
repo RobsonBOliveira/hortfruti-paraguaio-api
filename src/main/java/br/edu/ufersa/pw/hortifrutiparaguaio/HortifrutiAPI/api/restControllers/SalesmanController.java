@@ -3,10 +3,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.salesman.Salesman;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SalesmanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,4 +19,7 @@ public class SalesmanController {
 
     @GetMapping("/salesmans/{salesmanId}")
     public Optional<Salesman> getSalesmansById(@PathVariable Long salesmanId){return salesman.findById(salesmanId);}
+
+    @PostMapping("/salesmans/post")
+    public Salesman createSalesman(@RequestBody Salesman sales){return salesman.save(sales); }
 }

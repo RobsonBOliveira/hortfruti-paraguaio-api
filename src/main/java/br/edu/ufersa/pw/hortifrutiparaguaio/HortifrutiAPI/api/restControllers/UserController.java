@@ -27,14 +27,14 @@ public class UserController {
     @PostMapping("/users/post")
     public User createUser(@RequestBody User user) {return usuario.save(user);}
 
+    @DeleteMapping("/users/delete/{idUser}")
+    public void deleteUser(@PathVariable Long idUser) {usuario.deleteById(idUser);}
+
     @PutMapping("/users/put/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
         updatedUser.setId(userId);
         User savedUser = usuario.save(updatedUser);
         return ResponseEntity.ok(savedUser);
     }
-
-    @DeleteMapping("/users/delete/{idUser}")
-    public void deleteUser(@PathVariable Long idUser) {usuario.deleteById(idUser);}
 
 }

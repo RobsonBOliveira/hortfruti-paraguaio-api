@@ -22,4 +22,7 @@ public class SalesmanController {
 
     @PostMapping("/salesmans/post")
     public Salesman createSalesman(@RequestBody Salesman sales){return salesman.save(sales); }
+
+    @DeleteMapping("/salesmans/delete/{salesmanId}")
+    public void deleteSalemans(@PathVariable Long salesmanId){salesman.deleteById(salesmanId);}
 }

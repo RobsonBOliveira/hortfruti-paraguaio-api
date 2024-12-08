@@ -8,5 +8,5 @@ import lombok.Setter;
 public class SellerDTO {
     private Long id;
     private String cnpj;
-
+    private boolean status;
 }

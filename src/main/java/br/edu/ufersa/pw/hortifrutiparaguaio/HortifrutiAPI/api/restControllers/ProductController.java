@@ -29,11 +29,12 @@ public class ProductController {
     @PostMapping("/products/post")
     public Product addProduct(@RequestBody Product product) {return productRepository.save(product);}
 
-    @PutMapping("/products/put/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updateProduct) {
-        updateProduct.setId(id);
-        Product updatedProduct = productRepository.save(updateProduct);
-        return ResponseEntity.ok(updatedProduct);
+    @PutMapping("/products/put")
+    public ResponseEntity<Product> updateProduct(@RequestBody Product updateProduct) {
+        if (productRepository.existsById(updateProduct.getId())) {
+            return ResponseEntity.ok(productRepository.save(updateProduct));
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }

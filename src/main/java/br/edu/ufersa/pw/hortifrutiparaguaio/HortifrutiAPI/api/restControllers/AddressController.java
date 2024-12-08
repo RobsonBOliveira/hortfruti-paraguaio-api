@@ -28,10 +28,11 @@ public class AddressController {
     @PostMapping("/address/post")
     public Address createAddress(@RequestBody Address address) {return addressRepository.save(address);}
 
-    @PutMapping("/address/put/{id}")
-    public ResponseEntity<Address> updateAddress(@PathVariable Long id, @RequestBody Address updateAddress) {
-        updateAddress.setId(id);
-        Address updatedAddress = addressRepository.save(updateAddress);
-        return ResponseEntity.ok(updatedAddress);
+    @PutMapping("/address/put")
+    public ResponseEntity<Address> updateAddress(@RequestBody Address updateAddress) {
+        if (addressRepository.existsById(updateAddress.getId())) {
+            return ResponseEntity.ok(addressRepository.save(updateAddress));
+        }
+        return ResponseEntity.notFound().build();
     }
 }

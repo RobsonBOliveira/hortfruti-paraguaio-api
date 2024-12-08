@@ -3,6 +3,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,11 +28,11 @@ public class ClientController {
     @PostMapping("clients/post")
     public Client createClient(@RequestBody Client client) {return clientRepository.save(client);}
 
-    @PutMapping("/clients/put/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody Client updateClient) {
-        updateClient.setId(id);
-        Client updatedClient = clientRepository.save(updateClient);
-        return ResponseEntity.ok(updatedClient);
+    @PutMapping("/clients/put")
+    public ResponseEntity<Client> updateClient(@RequestBody Client updateClient) {
+        if (clientRepository.existsById(updateClient.getId())) {
+            return ResponseEntity.ok(clientRepository.save(updateClient));
+        }
+        return ResponseEntity.notFound().build();
     }
-
 }

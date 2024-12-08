@@ -12,8 +12,6 @@ import lombok.Setter;
 @IdClass(SellerPK.class)
 public class Seller{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
 
     @Id

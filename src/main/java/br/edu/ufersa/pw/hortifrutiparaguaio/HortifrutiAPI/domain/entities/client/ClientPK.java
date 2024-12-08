@@ -13,6 +13,4 @@ public class ClientPK implements Serializable {
     private long id;
     private String phoneNumber;
     private String email;
-    private String password;
-    private boolean status;
 }

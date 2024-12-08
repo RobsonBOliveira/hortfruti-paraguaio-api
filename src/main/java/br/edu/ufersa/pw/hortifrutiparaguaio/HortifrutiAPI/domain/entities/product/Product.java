@@ -2,6 +2,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.produ
 
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart.Cart;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product.CartProduct;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,8 +25,8 @@ public class Product {
     @JoinColumn(name = "id_seller", referencedColumnName = "id", nullable = false)
     private Seller idSeller;
 
-    @OneToMany(mappedBy = "tb_product", cascade = CascadeType.ALL)
-    private Set<Product> products;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<CartProduct> cartProduct;
 
     private String name;
 

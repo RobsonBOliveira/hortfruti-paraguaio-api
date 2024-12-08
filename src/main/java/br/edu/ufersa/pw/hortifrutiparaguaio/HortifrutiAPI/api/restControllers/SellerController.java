@@ -1,7 +1,7 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Salesman;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SalesmanRepository;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,17 +12,18 @@ import java.util.Optional;
 @RequestMapping("api/v1")
 public class SellerController {
     @Autowired
-    private SalesmanRepository salesman;
+    private SellerRepository seller;
 
-    @RequestMapping("/salesmans")
-    public List<Salesman> getSalesmans(){return salesman.findAll();}
+    @RequestMapping("/sellers")
+    public List<Seller> getSeller(){return seller.findAll();}
 
-    @GetMapping("/salesmans/{salesmanId}")
-    public Optional<Salesman> getSalesmansById(@PathVariable Long salesmanId){return salesman.findById(salesmanId);}
+    @GetMapping("/seller/{sellerId}")
+    public Optional<Seller> getSellerById(@PathVariable Long sellerId){return seller.findById(sellerId);}
 
-    @PostMapping("/salesmans/post")
-    public Salesman createSalesman(@RequestBody Salesman sales){return salesman.save(sales); }
+    @PostMapping("/seller/post")
+    public Seller createSeller(@RequestBody Seller sellers){return seller.save(sellers);}
 
-    @DeleteMapping("/salesmans/delete/{salesmanId}")
-    public void deleteSalemans(@PathVariable Long salesmanId){salesman.deleteById(salesmanId);}
+    @DeleteMapping("/seller/delete/{sellerId}")
+    public void deleteSeller(@PathVariable Long sellerId){seller.deleteById(sellerId);}
+
 }

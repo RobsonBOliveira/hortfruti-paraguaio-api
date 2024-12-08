@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequestMapping("api/v1")
 public class OrderController {
     @Autowired
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
     @RequestMapping("/orders")
     public List<Order> getOrders() {return orderRepository.findAll();}

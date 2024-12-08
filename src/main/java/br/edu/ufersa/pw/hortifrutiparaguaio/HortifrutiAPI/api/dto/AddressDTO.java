@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 
 public class AddressDTO {
-
     private Long id;
     private Long idClient;
     private String street;
@@ -18,4 +17,5 @@ public class AddressDTO {
     private String state;
     private long number;
     private String zipcode;
+
 }

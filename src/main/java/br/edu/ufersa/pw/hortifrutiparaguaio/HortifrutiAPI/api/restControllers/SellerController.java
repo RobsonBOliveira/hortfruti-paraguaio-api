@@ -18,20 +18,18 @@ public class SellerController {
     @RequestMapping("/sellers")
     public List<Seller> getSellerRepository() {return sellerRepository.findAll();}
 
-    @GetMapping("/sellers/{sellerId}")
-    public Optional<Seller> getSellerById(@PathVariable Long sellerId) {return sellerRepository.findById(sellerId);}
+    @GetMapping("/sellers/{id}")
+    public Optional<Seller> getSellerById(@PathVariable Long id) {return sellerRepository.findById(id);}
+
+    @DeleteMapping("/sellers/delete/{id}")
+    public void deleteSeller(@PathVariable Long id) {sellerRepository.deleteById(id);}
 
     @PostMapping("/sellers/post")
     public Seller createSeller(@RequestBody Seller seller) {return sellerRepository.save(seller);}
 
-    @DeleteMapping("/sellers/delete/{sellerId}")
-    public void deleteSeller(@PathVariable Long sellerId) {
-        sellerRepository.deleteById(sellerId);
-    }
-
-    @PutMapping("/sellers/put/{sellerId}")
-    public ResponseEntity<Seller> updateSeller(@PathVariable Long sellerId, @RequestBody Seller updateSeller) {
-        updateSeller.setId(sellerId);
+    @PutMapping("/sellers/put/{id}")
+    public ResponseEntity<Seller> updateSeller(@PathVariable Long id, @RequestBody Seller updateSeller) {
+        updateSeller.setId(id);
         Seller updatedSeller = sellerRepository.save(updateSeller);
         return ResponseEntity.ok(updatedSeller);
     }

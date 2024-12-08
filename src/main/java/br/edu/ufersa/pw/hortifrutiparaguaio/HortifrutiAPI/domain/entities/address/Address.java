@@ -16,7 +16,7 @@ public class Address {
     private Long id;
 
     @Column(name = "id_client", nullable = false)
-    private Long clientId;
+    private Long idClient;
 
     @Column(name = "street")
     private String street;

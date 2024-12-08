@@ -4,6 +4,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.address.Address;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -21,10 +22,16 @@ public class AddressController {
     @RequestMapping("/address/{idClient}")
     public List<Address> getAddressById(@PathVariable Long idClient) {return addressRepository.findAllById(Collections.singleton(idClient));}
 
-    @DeleteMapping("/address/delete/{idAddress}")
-    public void deleteAddress(@PathVariable Long idAddress) {addressRepository.deleteById(idAddress);}
+    @DeleteMapping("/address/delete/{id}")
+    public void deleteAddress(@PathVariable Long id) {addressRepository.deleteById(id);}
 
     @PostMapping("/address/post")
-    public Address createAddress(@RequestBody Address address) {addressRepository.save(address); return address;}
+    public Address createAddress(@RequestBody Address address) {return addressRepository.save(address);}
 
+    @PutMapping("/address/put/{id}")
+    public ResponseEntity<Address> updateAddress(@PathVariable Long id, @RequestBody Address updateAddress) {
+        updateAddress.setId(id);
+        Address updatedAddress = addressRepository.save(updateAddress);
+        return ResponseEntity.ok(updatedAddress);
+    }
 }

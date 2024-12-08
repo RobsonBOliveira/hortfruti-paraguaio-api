@@ -31,7 +31,7 @@ public class ProductController {
 
     @PutMapping("/products/put/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updateProduct) {
-        updateProduct.setIdProduct(id);
+        updateProduct.setId(id);
         Product updatedProduct = productRepository.save(updateProduct);
         return ResponseEntity.ok(updatedProduct);
     }

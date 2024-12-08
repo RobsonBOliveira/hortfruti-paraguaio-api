@@ -1,20 +1,19 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.salesman;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller;
 
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "salesman")
+@Table(name = "seller")
 @Getter
 @Setter
 @Entity
-public class Salesman {
+public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idsalesman")
+    @Column(name = "idseller")
     private long id;
-
     @Column(name = "CNPJ")
     private String cnpj;
 }

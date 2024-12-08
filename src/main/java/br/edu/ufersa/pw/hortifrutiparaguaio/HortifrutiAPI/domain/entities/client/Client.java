@@ -8,18 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@IdClass(ClientPK.class)
 public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @EmbeddedId
+    private ClientPK id;
 
-    @Id
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Id
-    private String email;
+    private String name;
 
     private String password;
 

@@ -19,11 +19,9 @@ public class Cart {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_client", referencedColumnName = "id")
     private Client client;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private Set<CartProduct> cartProduct;
-
-
 }

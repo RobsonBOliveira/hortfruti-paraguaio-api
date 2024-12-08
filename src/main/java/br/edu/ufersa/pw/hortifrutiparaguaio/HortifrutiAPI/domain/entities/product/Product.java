@@ -22,8 +22,8 @@ public class Product {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_seller", referencedColumnName = "id", nullable = false)
-    private Seller idSeller;
+    @JoinColumn(name = "id_seller", referencedColumnName = "id")
+    private Seller seller;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<CartProduct> cartProduct;

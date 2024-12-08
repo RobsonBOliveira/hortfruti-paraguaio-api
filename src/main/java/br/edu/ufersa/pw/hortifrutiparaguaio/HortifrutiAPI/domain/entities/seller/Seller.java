@@ -9,23 +9,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@IdClass(SellerPK.class)
 public class Seller{
-    @Id
-    private long id;
-
-    @Id
-    private String cnpj;
-
-    @Id
-    private String email;
-
+    @EmbeddedId
+    SellerPK id;
 
     private String name;
 
-
     private String password;
-
 
     private boolean status;
 }

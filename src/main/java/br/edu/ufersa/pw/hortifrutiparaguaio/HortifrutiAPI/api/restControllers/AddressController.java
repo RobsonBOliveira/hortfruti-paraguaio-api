@@ -19,11 +19,15 @@ public class AddressController {
     @RequestMapping("/address")
     public List<Address> getAddress() {return addressRepository.findAll();}
 
-    @RequestMapping("address/{idClient}")
+    @RequestMapping("/address/{idClient}")
     public List<Address> getAddressById(@PathVariable Long idClient) {
         return addressRepository.findAllById(Collections.singleton(idClient));
     }
 
-    @PostMapping("address/post")
+    @PostMapping("/address/post")
     public Address createAddress(@RequestBody Address address) {addressRepository.save(address); return address;}
+
+
+    @DeleteMapping("/address/delete/{idAddress}")
+    public void deleteAddress(@PathVariable Long idAddress) {addressRepository.deleteById(idAddress);}
 }

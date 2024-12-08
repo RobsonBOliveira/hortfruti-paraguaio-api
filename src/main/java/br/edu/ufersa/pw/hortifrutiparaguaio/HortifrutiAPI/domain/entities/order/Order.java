@@ -24,8 +24,8 @@ public class Order {
     private Cart cart;
 
     @OneToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id_client")
-    private Client client;
+    @JoinColumn(name = "id_client", referencedColumnName = "id_client", nullable = false)
+    private Cart cartClient;
 
     private String status;
 

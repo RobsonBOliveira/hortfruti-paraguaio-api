@@ -13,17 +13,16 @@ import java.io.Serializable;
 @Setter
 @Entity
 public class CartProduct implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long fakeId;
+    @EmbeddedId
+    private CartProductPK id;
 
     @ManyToOne
-    @MapsId("id")
+    @MapsId("id_cart")
     @JoinColumn(name = "id_cart")
     private Cart cart;
 
     @ManyToOne
-    @MapsId("id")
+    @MapsId("id_product")
     @JoinColumn(name = "id_product")
     private Product product;
 

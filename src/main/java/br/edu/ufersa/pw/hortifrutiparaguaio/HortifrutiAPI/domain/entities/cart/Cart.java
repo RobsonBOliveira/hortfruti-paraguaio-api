@@ -1,5 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart;
 
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product.CartProduct;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -18,11 +19,9 @@ public class Cart {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_client", referencedColumnName = "id")
     private Client client;
 
-    @OneToMany(mappedBy = "tb_cart", cascade = CascadeType.ALL)
-    private Set<Cart> carts;
-
-
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    private Set<CartProduct> cartProduct;
 }

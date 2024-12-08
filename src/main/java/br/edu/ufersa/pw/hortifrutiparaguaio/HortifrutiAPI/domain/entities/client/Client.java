@@ -1,33 +1,28 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller;
-
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "tb_seller")
+@Table(name = "tb_client")
 @Getter
 @Setter
 @Entity
-@IdClass(SellerPK.class)
-public class Seller{
+@IdClass(ClientPK.class)
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Id
-    private String cnpj;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     @Id
     private String email;
 
-
-    private String name;
-
-
     private String password;
-
 
     private boolean status;
 }

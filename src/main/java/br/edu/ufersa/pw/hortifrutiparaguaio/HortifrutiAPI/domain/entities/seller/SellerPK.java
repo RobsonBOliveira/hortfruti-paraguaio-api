@@ -1,33 +1,19 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller;
 
-
-import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "tb_seller")
+import java.io.Serializable;
+
 @Getter
 @Setter
-@Entity
-@IdClass(SellerPK.class)
-public class Seller{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+@EqualsAndHashCode
+public class SellerPK implements Serializable {
     private long id;
-
-    @Id
     private String cnpj;
-
-    @Id
     private String email;
-
-
     private String name;
-
-
     private String password;
-
-
     private boolean status;
 }

@@ -1,23 +1,34 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order;
 
 
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart.Cart;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
 
-@Table(name="orders")
+@Table(name = "tb_orders")
 @Getter
 @Setter
 @Entity
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idorder")
-    private int OrderId;
-    @Column(name="iduser")
-    private int ProductId;
-    @Column(name="orderdate")
-    private Date OrderDate;
+    @Column(name = "num")
+    private long orderNum;
+
+    @OneToOne
+    @JoinColumn(name = "id_cart", referencedColumnName = "id", nullable = false)
+    private Cart cart;
+
+    @OneToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id_client")
+    private Client client;
+
+    private String status;
+
+    @Column(name = "order_date")
+    private Date orderDate;
 }

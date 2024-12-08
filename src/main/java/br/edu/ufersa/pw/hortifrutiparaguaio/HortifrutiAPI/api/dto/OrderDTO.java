@@ -12,5 +12,5 @@ public class OrderDTO {
     private Long idCard;
     private Long idClient;
     private String status;
-    private Date orderDate;
+
 }

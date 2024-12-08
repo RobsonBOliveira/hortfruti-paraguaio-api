@@ -23,15 +23,15 @@ public class ProductController {
     @GetMapping("/products/{id}")
     public Optional<Product> getProductById(@PathVariable Long id) {return productRepository.findById(id);}
 
-    @PostMapping("/products/post")
-    public Product addProduct(@RequestBody Product product) {return productRepository.save(product);}
-
     @DeleteMapping("/products/delete/{id}")
     public void deleteProduct(@PathVariable Long id) {productRepository.deleteById(id);}
 
+    @PostMapping("/products/post")
+    public Product addProduct(@RequestBody Product product) {return productRepository.save(product);}
+
     @PutMapping("/products/put/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updateProduct) {
-        updateProduct.setIdProduct(id);
+        updateProduct.setId(id);
         Product updatedProduct = productRepository.save(updateProduct);
         return ResponseEntity.ok(updatedProduct);
     }

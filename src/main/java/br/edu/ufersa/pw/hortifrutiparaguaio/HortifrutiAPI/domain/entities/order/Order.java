@@ -17,7 +17,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num")
-    private long orderNum;
+    private long id;
 
     @OneToOne
     @JoinColumn(name = "id_cart", referencedColumnName = "id", nullable = false)

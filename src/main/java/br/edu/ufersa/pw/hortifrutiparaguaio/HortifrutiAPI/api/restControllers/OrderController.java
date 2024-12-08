@@ -18,15 +18,13 @@ public class OrderController {
     @RequestMapping("/orders")
     public List<Order> getOrders() {return orderRepository.findAll();}
 
-    @GetMapping("/orders/{orderId}")
-    public Optional<Order> getOrderById(@PathVariable Long orderId) {return orderRepository.findById(orderId);}
+    @GetMapping("/orders/{id}")
+    public Optional<Order> getOrderById(@PathVariable Long id) {return orderRepository.findById(id);}
+
+    @DeleteMapping("/orders/delete/{id}")
+    public void deleteOrder(@PathVariable Long id) {orderRepository.deleteById(id);}
 
     @PostMapping("/orders/post")
     public Order createOrder(@RequestBody Order order) {return orderRepository.save(order);}
-
-    @DeleteMapping("/orders/delete/{orderId}")
-    public void deleteOrder(@PathVariable Long orderId) {
-        orderRepository.deleteById(orderId);
-    }
 
 }

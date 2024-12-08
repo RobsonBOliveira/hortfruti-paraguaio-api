@@ -27,6 +27,7 @@ public class Order {
     @JoinColumn(name = "id_client", referencedColumnName = "id_client", nullable = false)
     private Cart cartClient;
 
+    @Column(name = "status")
     private String status;
 
     @Column(name = "order_date")

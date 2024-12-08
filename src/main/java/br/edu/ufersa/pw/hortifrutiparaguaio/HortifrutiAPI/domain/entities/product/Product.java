@@ -1,15 +1,9 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product;
 
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart.Cart;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product.CartProduct;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Table(name = "tb_product")
 @Getter
@@ -18,23 +12,24 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    @Column(name = "id")
+    private Long idProduct;
 
-    @ManyToOne
-    @JoinColumn(name = "id_seller", referencedColumnName = "id")
-    private Seller seller;
+    @Column(name = "id_seller")
+    private Long idSalesMan;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private Set<CartProduct> cartProduct;
-
+    @Column(name = "name")
     private String name;
 
-    private String image;
-
+    @Column(name="description")
     private String description;
 
+    @Column(name = "price")
     private double price;
 
+    @Column(name="quantity")
     private int quantity;
+
+
 }

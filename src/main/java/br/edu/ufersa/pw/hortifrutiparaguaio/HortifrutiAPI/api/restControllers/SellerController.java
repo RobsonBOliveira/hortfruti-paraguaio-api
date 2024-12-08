@@ -1,4 +1,4 @@
-/*package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SellerRepository;
@@ -26,4 +26,4 @@ public class SellerController {
     @DeleteMapping("/seller/delete/{sellerId}")
     public void deleteSeller(@PathVariable Long sellerId){seller.deleteById(sellerId);}
 
-}*/
+}

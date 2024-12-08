@@ -17,7 +17,7 @@ public class Product {
     private Long idProduct;
 
     @Column(name = "id_seller")
-    private Long idSalesMan;
+    private Long idSeller;
 
     @Column(name = "name")
     private String name;

@@ -26,6 +26,8 @@ public class ProductController {
     @PostMapping("/products/post")
     public Product addProduct(@RequestBody Product product) {return productRepository.save(product);}
 
+    @DeleteMapping("/products/delete/{id}")
+    public void deleteProduct(@PathVariable Long id) {productRepository.deleteById(id);}
 
     @PutMapping("/products/put/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updateProduct) {
@@ -34,6 +36,4 @@ public class ProductController {
         return ResponseEntity.ok(updatedProduct);
     }
 
-    @DeleteMapping("/products/delete/{id}")
-    public void deleteProduct(@PathVariable long id) {productRepository.deleteById(id);}
 }

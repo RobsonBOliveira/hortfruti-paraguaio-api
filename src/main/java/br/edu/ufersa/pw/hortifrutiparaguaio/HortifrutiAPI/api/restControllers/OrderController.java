@@ -13,18 +13,20 @@ import java.util.Optional;
 @RequestMapping("api/v1")
 public class OrderController {
     @Autowired
-    OrderRepository order;
+    OrderRepository orderRepository;
 
     @RequestMapping("/orders")
-    public List<Order> getOrders(){return order.findAll();}
+    public List<Order> getOrders() {return orderRepository.findAll();}
 
     @GetMapping("/orders/{orderId}")
-    public Optional<Order> getOrderById(@PathVariable Long orderId){return order.findById(orderId);}
+    public Optional<Order> getOrderById(@PathVariable Long orderId) {return orderRepository.findById(orderId);}
 
     @PostMapping("/orders/post")
-    public Order createOrder(@RequestBody Order orders) {return order.save(orders);}
+    public Order createOrder(@RequestBody Order order) {return orderRepository.save(order);}
 
     @DeleteMapping("/orders/delete/{orderId}")
-    public void deleteOrder(@PathVariable Long orderId){order.deleteById(orderId);}
+    public void deleteOrder(@PathVariable Long orderId) {
+        orderRepository.deleteById(orderId);
+    }
 
 }

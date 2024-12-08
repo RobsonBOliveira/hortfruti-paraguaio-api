@@ -17,15 +17,13 @@ public class SellerController {
     @RequestMapping("/sellers")
     public List<Seller> getSellerRepository() {return sellerRepository.findAll();}
 
-    @GetMapping("/seller/{sellerId}")
+    @GetMapping("/sellers/{id}")
     public Optional<Seller> getSellerById(@PathVariable Long sellerId) {return sellerRepository.findById(sellerId);}
 
-    @PostMapping("/seller/post")
-    public Seller createSeller(@RequestBody Seller seller) {return sellerRepository.save(seller);}
+    @DeleteMapping("/sellers/delete/{id}")
+    public void deleteSeller(@PathVariable Long sellerId) {sellerRepository.deleteById(sellerId);}
 
-    @DeleteMapping("/seller/delete/{sellerId}")
-    public void deleteSeller(@PathVariable Long sellerId) {
-        sellerRepository.deleteById(sellerId);
-    }
+    @PostMapping("/sellers/post")
+    public Seller createSeller(@RequestBody Seller seller) {return sellerRepository.save(seller);}
 
 }

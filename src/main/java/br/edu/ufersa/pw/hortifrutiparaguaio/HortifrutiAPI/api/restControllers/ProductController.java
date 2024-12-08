@@ -1,4 +1,4 @@
-/*package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.Product;
@@ -20,20 +20,20 @@ public class ProductController {
     @RequestMapping("/products")
     public List<Product> getAllProducts() {return productRepository.findAll();}
 
-    @GetMapping("/products/{idProduct}")
-    public Optional<Product> getProductById(@PathVariable long idProduct) {return productRepository.findById(idProduct);}
+    @GetMapping("/products/{id}")
+    public Optional<Product> getProductById(@PathVariable Long id) {return productRepository.findById(id);}
 
     @PostMapping("/products/post")
     public Product addProduct(@RequestBody Product product) {return productRepository.save(product);}
 
 
-    @PutMapping("/products/put/{idProduct}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long idProduct, @RequestBody Product updateProduct) {
-        updateProduct.setIdProduct(idProduct);
+    @PutMapping("/products/put/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updateProduct) {
+        updateProduct.setIdProduct(id);
         Product updatedProduct = productRepository.save(updateProduct);
         return ResponseEntity.ok(updatedProduct);
     }
 
-    @DeleteMapping("/products/delete/{idProduct}")
-    public void deleteProduct(@PathVariable long idProduct) {productRepository.deleteById(idProduct);}
-}*/
+    @DeleteMapping("/products/delete/{id}")
+    public void deleteProduct(@PathVariable long id) {productRepository.deleteById(id);}
+}

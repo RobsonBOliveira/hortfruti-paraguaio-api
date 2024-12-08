@@ -1,4 +1,4 @@
-/*package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
@@ -28,4 +28,3 @@ public class OrderController {
     public void deleteOrder(@PathVariable Long orderId){order.deleteById(orderId);}
 
 }
-*/

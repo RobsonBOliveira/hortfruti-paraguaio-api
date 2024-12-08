@@ -9,12 +9,23 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Client {
-    @EmbeddedId
-    private ClientPK id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "phone_number")
+    private String phone;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "name")
     private String name;
 
+    @Column(name="password")
     private String password;
 
-    private boolean status;
+    @Column(name = "status")
+    private int status;
 }

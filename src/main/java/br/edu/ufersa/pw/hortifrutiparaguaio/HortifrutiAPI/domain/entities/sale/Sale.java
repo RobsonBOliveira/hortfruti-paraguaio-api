@@ -24,5 +24,6 @@ public class Sale {
     @Column(name = "sale_date")
     private Date saleDate;
 
+    @Column(name = "total")
     private double total;
 }

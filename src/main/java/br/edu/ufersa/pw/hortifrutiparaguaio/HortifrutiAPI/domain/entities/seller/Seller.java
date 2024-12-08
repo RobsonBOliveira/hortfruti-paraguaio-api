@@ -10,12 +10,24 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Seller{
-    @EmbeddedId
-    SellerPK id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "cnpj")
+    private String cnpj;
+
+    @Column (name ="email")
+    private String email;
+
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
     private String password;
 
-    private boolean status;
+    @Column(name = "status")
+    private int status;
 }

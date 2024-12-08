@@ -1,30 +1,27 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart.Cart;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 @Table(name = "tb_cart_products")
 @Getter
 @Setter
 @Entity
-public class CartProduct implements Serializable {
-    @EmbeddedId
-    private CartProductPK id;
+public class CartProduct {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @MapsId("id_cart")
-    @JoinColumn(name = "id_cart")
+    @JoinColumn(name = "id_cart", nullable = false)
     private Cart cart;
 
-    @ManyToOne
-    @MapsId("id_product")
-    @JoinColumn(name = "id_product")
-    private Product product;
+    @Column(name = "id_product", nullable = false)
+    private long idProduct;
 
+    @Column(name = "quantity", nullable = false)
     private long quantity;
 }

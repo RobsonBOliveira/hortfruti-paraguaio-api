@@ -13,12 +13,15 @@ public class Address {
 
     @ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
-    private Client idCliente;
+    private Client client;
 
+    @Column(name = "stree")
     private String street;
 
+    @Column(name = "city")
     private String city;
 
+    @Column(name = "state")
     private String state;
 
     @Column(name = "num")
@@ -26,5 +29,4 @@ public class Address {
 
     @Column(name = "zip_code")
     private String zipcode;
-
 }

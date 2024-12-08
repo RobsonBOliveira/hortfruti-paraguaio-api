@@ -12,14 +12,13 @@ import lombok.Setter;
 public class Seller{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "cnpj")
+    @Column(name = "cnpj", unique = true)
     private String cnpj;
 
-    @Column (name ="email")
+    @Column (name ="email", unique = true)
     private String email;
 
     @Column(name = "name")
@@ -29,5 +28,5 @@ public class Seller{
     private String password;
 
     @Column(name = "status")
-    private int status;
+    private boolean status;
 }

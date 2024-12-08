@@ -11,6 +11,6 @@ public class ClientDTO {
     private String email;
     private String name;
     private String password;
-    private int status;
+    private boolean status;
 
 }

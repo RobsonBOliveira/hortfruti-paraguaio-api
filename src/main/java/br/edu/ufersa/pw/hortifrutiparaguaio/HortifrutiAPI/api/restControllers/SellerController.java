@@ -3,6 +3,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +28,11 @@ public class SellerController {
     @PostMapping("/sellers/post")
     public Seller createSeller(@RequestBody Seller seller) {return sellerRepository.save(seller);}
 
-    @PutMapping("/sellers/put/{id}")
-    public ResponseEntity<Seller> updateSeller(@PathVariable Long id, @RequestBody Seller updateSeller) {
-        updateSeller.setId(id);
-        Seller updatedSeller = sellerRepository.save(updateSeller);
-        return ResponseEntity.ok(updatedSeller);
+    @PutMapping("/sellers/put")
+    public ResponseEntity<Seller> updateSeller(@RequestBody Seller updateSeller) {
+        if (sellerRepository.existsById(updateSeller.getId())) {
+            return ResponseEntity.ok(sellerRepository.save(updateSeller));
+        }
+        return ResponseEntity.notFound().build();
     }
 }

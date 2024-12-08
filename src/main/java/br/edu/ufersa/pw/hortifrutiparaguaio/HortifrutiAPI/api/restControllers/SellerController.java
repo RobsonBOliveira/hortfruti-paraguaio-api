@@ -12,18 +12,20 @@ import java.util.Optional;
 @RequestMapping("api/v1")
 public class SellerController {
     @Autowired
-    private SellerRepository seller;
+    private SellerRepository sellerRepository;
 
     @RequestMapping("/sellers")
-    public List<Seller> getSeller(){return seller.findAll();}
+    public List<Seller> getSellerRepository() {return sellerRepository.findAll();}
 
     @GetMapping("/seller/{sellerId}")
-    public Optional<Seller> getSellerById(@PathVariable Long sellerId){return seller.findById(sellerId);}
+    public Optional<Seller> getSellerById(@PathVariable Long sellerId) {return sellerRepository.findById(sellerId);}
 
     @PostMapping("/seller/post")
-    public Seller createSeller(@RequestBody Seller sellers){return seller.save(sellers);}
+    public Seller createSeller(@RequestBody Seller seller) {return sellerRepository.save(seller);}
 
     @DeleteMapping("/seller/delete/{sellerId}")
-    public void deleteSeller(@PathVariable Long sellerId){seller.deleteById(sellerId);}
+    public void deleteSeller(@PathVariable Long sellerId) {
+        sellerRepository.deleteById(sellerId);
+    }
 
 }

@@ -1,21 +1,24 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.address;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Table(name = "tb_address")
 @Entity
+@Getter
+@Setter
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_address")
-    private long id;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
-    private Client client;
+    @Column(name = "id_client", nullable = false)
+    private Long clientId;
 
-    @Column(name = "stree")
+    @Column(name = "street")
     private String street;
 
     @Column(name = "city")

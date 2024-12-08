@@ -8,7 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class OrderDTO {
-    private Long orderId;
+    private Long id;
     private Long idCard;
     private Long idClient;
     private String status;

@@ -1,5 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
 
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +9,17 @@ import lombok.Setter;
 public class SellerDTO {
     private Long id;
     private String cnpj;
+    private String email;
+    private String name;
+    private String password;
     private boolean status;
+
+    public SellerDTO(Seller seller) {
+        this.id = seller.getId();
+        this.cnpj = seller.getCnpj();
+        this.email = seller.getEmail();
+        this.name = seller.getName();
+        this.password = seller.getPassword();
+        this.status = seller.isStatus();
+    }
 }

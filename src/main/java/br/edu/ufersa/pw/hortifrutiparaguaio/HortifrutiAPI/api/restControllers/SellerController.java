@@ -1,38 +1,51 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.SellerDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SellerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.SellerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1")
 public class SellerController {
-    @Autowired
-    private SellerRepository sellerRepository;
+
+    private final SellerService service;
+
+    public SellerController(SellerService service) {
+        this.service = service;
+    }
 
     @RequestMapping("/sellers")
-    public List<Seller> getSellerRepository() {return sellerRepository.findAll();}
+    public ResponseEntity<?> getSeller() {
+        ResponseEntity<?> response = new ResponseEntity<List<SellerDTO>>(service.findAll(), HttpStatus.OK);
+        return response;
+    }
 
     @GetMapping("/sellers/{id}")
-    public Optional<Seller> getSellerById(@PathVariable Long id) {return sellerRepository.findById(id);}
+    public ResponseEntity<?> getSellerById(@PathVariable Long id) {
+        ResponseEntity<?> response = new ResponseEntity<SellerDTO>(service.getSellerById(id), HttpStatus.OK);
+        return response;
+    }
 
     @DeleteMapping("/sellers/delete/{id}")
-    public void deleteSeller(@PathVariable Long id) {sellerRepository.deleteById(id);}
+    public ResponseEntity<?> deleteSeller(@PathVariable Long id) {
+        ResponseEntity<?> response = new ResponseEntity<SellerDTO>(service.deleteSellerById(id), HttpStatus.OK);
+        return response;
+    }
 
     @PostMapping("/sellers/post")
-    public Seller createSeller(@RequestBody Seller seller) {return sellerRepository.save(seller);}
+    public ResponseEntity<?> createSeller(@RequestBody Seller seller) {
+        ResponseEntity<?> response = new ResponseEntity<SellerDTO>(service.createSeller(seller), HttpStatus.OK);
+        return response;
+    }
 
     @PutMapping("/sellers/put")
-    public ResponseEntity<Seller> updateSeller(@RequestBody Seller updateSeller) {
-        if (sellerRepository.existsById(updateSeller.getId())) {
-            return ResponseEntity.ok(sellerRepository.save(updateSeller));
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<?> updateSeller(@RequestBody Seller updateSeller) {
+        ResponseEntity<?> response = new ResponseEntity<SellerDTO>(service.updateSeller(updateSeller), HttpStatus.OK);
+        return response;
     }
 }

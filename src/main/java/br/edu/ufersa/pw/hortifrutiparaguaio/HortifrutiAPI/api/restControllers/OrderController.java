@@ -1,30 +1,44 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
-
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.OrderService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1")
 public class OrderController {
-    @Autowired
-    private OrderRepository orderRepository;
+
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @RequestMapping("/orders")
-    public List<Order> getOrders() {return orderRepository.findAll();}
+    public ResponseEntity<?> getOrders() {
+        ResponseEntity<?> response = new ResponseEntity<>(orderService.findAll(), HttpStatus.OK);
+        return response;
+    }
 
     @GetMapping("/orders/{id}")
-    public Optional<Order> getOrderById(@PathVariable Long id) {return orderRepository.findById(id);}
+    public ResponseEntity<?> getOrderById(@PathVariable Long id) {
+        ResponseEntity<?> response = new ResponseEntity<>(orderService.findById(id), HttpStatus.OK);
+        return response;
+    }
 
     @DeleteMapping("/orders/delete/{id}")
-    public void deleteOrder(@PathVariable Long id) {orderRepository.deleteById(id);}
+    public ResponseEntity<?> deleteOrder(@PathVariable Long id) {
+        ResponseEntity<?> response = new ResponseEntity<>(orderService.deleteOrder(id), HttpStatus.OK);
+    return response;
+    }
 
     @PostMapping("/orders/post")
-    public Order createOrder(@RequestBody Order order) {return orderRepository.save(order);}
+    public ResponseEntity<?> createOrder(@RequestBody Order order) {
+        ResponseEntity<?> response = new ResponseEntity<>(orderService.createOrder(order), HttpStatus.CREATED);
+        return response;
+    }
 
 }

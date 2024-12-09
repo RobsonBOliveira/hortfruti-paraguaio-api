@@ -29,6 +29,7 @@ public class ClientService{
                 .collect(Collectors.toList());
         return result;
     }
+
     public ClientDTO getClientById(final Long id) {
         Optional<Client> result = repository.findById(id);
         return result.map(ClientDTO::new).orElse(null);

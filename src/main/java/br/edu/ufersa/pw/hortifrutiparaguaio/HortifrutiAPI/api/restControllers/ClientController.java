@@ -17,7 +17,7 @@ import java.util.Optional;
 public class ClientController {
 
 
-    @Autowired
+    //@Autowired
     private ClientRepository clientRepository;
 
     private final ClientService service;
@@ -33,19 +33,26 @@ public class ClientController {
     }
 
     @GetMapping("/clients/{id}")
-    public Optional<Client> getClientById(@PathVariable Long id) {return clientRepository.findById(id);}
+    public ResponseEntity<?> getClientById(@PathVariable Long id) {
+        ResponseEntity<?> response = new ResponseEntity<ClientDTO>(service.getClientById(id), HttpStatus.OK);
+        return response;
+    }
 
     @DeleteMapping("/clients/delete/{id}")
-    public void deleteClient(@PathVariable Long id) {clientRepository.deleteById(id);}
+    public ResponseEntity<?> deleteClient(@PathVariable Long id) {
+        ResponseEntity<?> response = new ResponseEntity<ClientDTO>(service.deleteClientById(id), HttpStatus.OK);
+        return response;
+    }
 
     @PostMapping("clients/post")
-    public Client createClient(@RequestBody Client client) {return clientRepository.save(client);}
+    public ResponseEntity<?> createClient(@RequestBody Client client) {
+        ResponseEntity<?> response = new ResponseEntity<ClientDTO>(service.createClient(client), HttpStatus.OK);
+        return response;
+    }
 
     @PutMapping("/clients/put")
-    public ResponseEntity<Client> updateClient(@RequestBody Client updateClient) {
-        if (clientRepository.existsById(updateClient.getId())) {
-            return ResponseEntity.ok(clientRepository.save(updateClient));
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<?> updateClient(@RequestBody Client updateClient) {
+        ResponseEntity<?> response = new ResponseEntity<ClientDTO>(service.updateClient(updateClient), HttpStatus.OK);
+        return response;
     }
 }

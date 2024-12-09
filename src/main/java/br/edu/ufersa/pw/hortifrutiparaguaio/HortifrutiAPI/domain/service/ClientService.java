@@ -21,11 +21,13 @@ public class ClientService{
     }
 
     public List<ClientDTO> findAll() {
-        List<ClientDTO> result = repository.findAll().stream().map(client -> new ClientDTO(client))
+        // Filtra os clientes com status true e mapeia para ClientDTO
+        List<ClientDTO> result = repository.findAll().stream()
+                .filter(client -> client.isStatus())  // Filtra os clientes com status true
+                .map(client -> new ClientDTO(client))  // Mapeia para ClientDTO
                 .collect(Collectors.toList());
         return result;
     }
-
     public ClientDTO getClientById(final Long id) {
         Optional<Client> result = repository.findById(id);
         return result.map(ClientDTO::new).orElse(null);

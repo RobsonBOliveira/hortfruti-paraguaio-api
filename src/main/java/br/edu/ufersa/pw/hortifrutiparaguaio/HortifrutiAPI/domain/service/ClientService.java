@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 public class ClientService{
 
     private final ClientRepository repository;
+
     public ClientService(final ClientRepository repository) {
         this.repository = repository;
     }

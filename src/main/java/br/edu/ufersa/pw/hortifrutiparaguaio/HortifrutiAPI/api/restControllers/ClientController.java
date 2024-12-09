@@ -17,14 +17,10 @@ import java.util.Optional;
 public class ClientController {
 
 
-    //@Autowired
-    private ClientRepository clientRepository;
-
     private final ClientService service;
     public ClientController(ClientService service) {
         this.service = service;
     }
-
 
     @RequestMapping("/clients")
     public ResponseEntity<?> getClients() {

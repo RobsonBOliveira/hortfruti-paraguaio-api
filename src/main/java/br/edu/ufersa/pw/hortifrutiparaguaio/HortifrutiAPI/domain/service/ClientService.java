@@ -7,13 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class ClientService{
+
     private final ClientRepository repository;
     public ClientService(final ClientRepository repository) {
         this.repository = repository;
@@ -50,7 +51,7 @@ public class ClientService{
             repository.save(result.get());
             return new ClientDTO(result.get());
         }
-        return null;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
     public ClientDTO updateClient(final Client client) {
@@ -59,6 +60,6 @@ public class ClientService{
             repository.save(client);
             return new ClientDTO(client);
         }
-        return null;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }

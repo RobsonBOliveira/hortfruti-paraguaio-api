@@ -1,5 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart;
 
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.CartDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product.CartProduct;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
 import jakarta.persistence.*;
@@ -24,4 +25,5 @@ public class Cart {
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CartProduct> cartProducts;
+
 }

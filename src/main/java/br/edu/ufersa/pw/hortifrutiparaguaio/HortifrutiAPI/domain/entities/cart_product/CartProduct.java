@@ -1,6 +1,7 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart.Cart;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,8 +20,9 @@ public class CartProduct {
     @JoinColumn(name = "id_cart", nullable = false)
     private Cart cart;
 
-    @Column(name = "id_product", nullable = false)
-    private long idProduct;
+    @ManyToOne
+    @JoinColumn(name = "id_product", nullable = false)
+    private Product product;
 
     @Column(name = "quantity", nullable = false)
     private long quantity;

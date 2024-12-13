@@ -1,6 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product;
 
-
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,22 +12,22 @@ import lombok.Setter;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "id_seller")
-    private Long idSeller;
+    @ManyToOne
+    @JoinColumn(name = "id_seller", nullable = false)
+    private Seller seller;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name="quantity")
+    @Column(name = "quantity", nullable = false)
     private int quantity;
 }

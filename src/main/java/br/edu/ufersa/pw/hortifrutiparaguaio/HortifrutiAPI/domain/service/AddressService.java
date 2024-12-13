@@ -31,7 +31,7 @@ public class AddressService {
     public List<AddressDTO> findByClientId(Long clientId) {
         List<Address> result = repository.findAll();
         return result.stream()
-                .filter(address -> address.getIdClient().equals(clientId))
+                .filter(address -> address.getClient().getId().equals(clientId))
                 .map(AddressDTO::new)
                 .collect(Collectors.toList());
     }

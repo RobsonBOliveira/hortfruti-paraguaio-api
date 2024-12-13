@@ -23,31 +23,26 @@ public class ClientController {
 
     @RequestMapping("/clients")
     public ResponseEntity<?> getClients() {
-        ResponseEntity<?> response = new ResponseEntity<>(service.findAll(), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/clients/{id}")
     public ResponseEntity<?> getClientById(@PathVariable Long id) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.getClientById(id), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.getClientById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/clients/delete/{id}")
     public ResponseEntity<?> deleteClient(@PathVariable Long id) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.deleteClientById(id), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.deleteClientById(id), HttpStatus.OK);
     }
 
     @PostMapping("clients/post")
     public ResponseEntity<?> createClient(@RequestBody Client client) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.createClient(client), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.createClient(client), HttpStatus.OK);
     }
 
     @PutMapping("/clients/put")
     public ResponseEntity<?> updateClient(@RequestBody Client updateClient) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.updateClient(updateClient), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.updateClient(updateClient), HttpStatus.OK);
     }
 }

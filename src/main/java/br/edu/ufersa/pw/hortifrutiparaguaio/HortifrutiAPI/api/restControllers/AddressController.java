@@ -18,31 +18,26 @@ public class AddressController {
 
     @RequestMapping("/address")
     public ResponseEntity<?> getAddress() {
-        ResponseEntity<?> response = new ResponseEntity<>(addressService.findAll(), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(addressService.findAll(), HttpStatus.OK);
     }
 
     @RequestMapping("/address/{idClient}")
     public ResponseEntity<?> getAddressById(@PathVariable Long idClient) {
-        ResponseEntity<?> response = new ResponseEntity<>(addressService.findByClientId(idClient), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(addressService.findByClientId(idClient), HttpStatus.OK);
     }
 
     @DeleteMapping("/address/delete/{id}")
     public ResponseEntity<?> deleteAddress(@PathVariable Long id) {
-        ResponseEntity<?> response = new ResponseEntity<>(addressService.delete(id), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(addressService.delete(id), HttpStatus.OK);
     }
 
     @PostMapping("/address/post")
     public ResponseEntity<?> createAddress(@RequestBody Address address) {
-        ResponseEntity<?> response = new ResponseEntity<>(addressService.createAddress(address), HttpStatus.CREATED);
-        return response;
+        return new ResponseEntity<>(addressService.createAddress(address), HttpStatus.CREATED);
     }
 
     @PutMapping("/address/put")
     public ResponseEntity<?> updateAddress(@RequestBody Address updateAddress) {
-        ResponseEntity<?> response = new ResponseEntity<>(addressService.updateAddress(updateAddress), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(addressService.updateAddress(updateAddress), HttpStatus.OK);
     }
 }

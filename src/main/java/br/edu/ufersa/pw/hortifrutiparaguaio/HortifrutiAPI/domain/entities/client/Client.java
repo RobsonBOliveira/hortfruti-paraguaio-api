@@ -14,7 +14,7 @@ public class Client {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "phone_number", unique = true)
+    @Column(name = "phone_number")
     private String phone;
 
     @Column(name = "email", unique = true)

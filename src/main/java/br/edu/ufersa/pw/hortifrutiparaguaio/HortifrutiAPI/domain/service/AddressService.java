@@ -20,12 +20,9 @@ public class AddressService {
     public AddressService(final AddressRepository repository) {this.repository = repository;}
 
     public List<AddressDTO> findAll() {
-        List<AddressDTO> result = repository.findAll().stream().map(Address -> new AddressDTO(Address))
-        .collect(Collectors.toList());
-        if (result.isEmpty()) {
-            return null;
-        }
-        return result;
+        return repository.findAll().stream()
+                .map(AddressDTO::new)
+                .toList();
     }
 
     public List<AddressDTO> findByClientId(Long clientId) {

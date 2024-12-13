@@ -21,9 +21,9 @@ public class SellerService {
     }
 
     public List<SellerDTO> findAll() {
-        List<SellerDTO> result = repository.findAll().stream().map(seller -> new SellerDTO(seller))
+        return repository.findAll().stream()
+                .map(SellerDTO::new)
                 .collect(Collectors.toList());
-        return result;
     }
 
     public SellerDTO getSellerById(final Long id) {

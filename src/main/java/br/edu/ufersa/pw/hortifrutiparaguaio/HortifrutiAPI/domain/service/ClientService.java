@@ -10,7 +10,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ClientService{
@@ -22,12 +21,10 @@ public class ClientService{
     }
 
     public List<ClientDTO> findAll() {
-        // Filtra os clientes com status true e mapeia para ClientDTO
-        List<ClientDTO> result = repository.findAll().stream()
-                .filter(client -> client.isStatus())  // Filtra os clientes com status true
-                .map(client -> new ClientDTO(client))  // Mapeia para ClientDTO
-                .collect(Collectors.toList());
-        return result;
+        return repository.findAll().stream()
+                .filter(Client::isStatus)
+                .map(ClientDTO::new)
+                .toList();
     }
 
     public ClientDTO getClientById(final Long id) {
@@ -61,8 +58,12 @@ public class ClientService{
     public ClientDTO updateClient(final Client client) {
         Optional<Client> result = repository.findById(client.getId());
         if (result.isPresent()) {
-            repository.save(client);
-            return new ClientDTO(client);
+            result.get().setName(client.getName());
+            result.get().setEmail(client.getEmail());
+            result.get().setPhone(client.getPhone());
+            result.get().setStatus(true);
+            repository.save(result.get());
+            return new ClientDTO(result.get());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }

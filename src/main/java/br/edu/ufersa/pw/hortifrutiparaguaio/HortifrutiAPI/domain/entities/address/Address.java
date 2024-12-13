@@ -1,8 +1,10 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.address;
 
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Table(name = "tb_address")
 @Entity
@@ -15,8 +17,9 @@ public class Address {
     @Column(name = "id_address")
     private Long id;
 
-    @Column(name = "id_client", nullable = false)
-    private Long idClient;
+    @ManyToOne
+    @JoinColumn(name = "id_client", nullable = false)
+    private Client client;
 
     @Column(name = "street")
     private String street;

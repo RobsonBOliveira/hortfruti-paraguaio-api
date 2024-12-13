@@ -19,31 +19,26 @@ public class SellerController {
 
     @RequestMapping("/sellers")
     public ResponseEntity<?> getSeller() {
-        ResponseEntity<?> response = new ResponseEntity<>(service.findAll(), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/sellers/{id}")
     public ResponseEntity<?> getSellerById(@PathVariable Long id) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.getSellerById(id), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.getSellerById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/sellers/delete/{id}")
     public ResponseEntity<?> deleteSeller(@PathVariable Long id) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.deleteSellerById(id), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.deleteSellerById(id), HttpStatus.OK);
     }
 
     @PostMapping("/sellers/post")
     public ResponseEntity<?> createSeller(@RequestBody Seller seller) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.createSeller(seller), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.createSeller(seller), HttpStatus.OK);
     }
 
     @PutMapping("/sellers/put")
     public ResponseEntity<?> updateSeller(@RequestBody Seller updateSeller) {
-        ResponseEntity<?> response = new ResponseEntity<>(service.updateSeller(updateSeller), HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(service.updateSeller(updateSeller), HttpStatus.OK);
     }
 }

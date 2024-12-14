@@ -2,6 +2,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.ProductDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.Product;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.ProductId;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.ProductService;
 
 import org.springframework.http.HttpStatus;
@@ -27,9 +28,9 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    @GetMapping("/products/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable Long id) {
-        return new ResponseEntity<>(productService.findById(id), HttpStatus.OK);
+    @GetMapping("/products/get")
+    public ResponseEntity<?> getProductById(@RequestBody ProductId productId) {
+        return new ResponseEntity<>(productService.findById(productId), HttpStatus.OK);
     }
 
     @DeleteMapping("/products/delete/{id}")

@@ -21,7 +21,10 @@ public class CartProduct {
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "id_product", nullable = false)
+    @JoinColumns({
+            @JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false),
+            @JoinColumn(name = "id_seller", referencedColumnName = "id_seller", nullable = false)
+    })
     private Product product;
 
     @Column(name = "quantity", nullable = false)

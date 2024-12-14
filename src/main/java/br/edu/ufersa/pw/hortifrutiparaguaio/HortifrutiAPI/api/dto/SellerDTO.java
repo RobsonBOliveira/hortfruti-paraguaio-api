@@ -11,7 +11,6 @@ public class SellerDTO {
     private String cnpj;
     private String email;
     private String name;
-    private String password;
     private boolean status;
 
     public SellerDTO(Seller seller) {
@@ -19,7 +18,6 @@ public class SellerDTO {
         this.cnpj = seller.getCnpj();
         this.email = seller.getEmail();
         this.name = seller.getName();
-        this.password = seller.getPassword();
         this.status = seller.isStatus();
     }
 }

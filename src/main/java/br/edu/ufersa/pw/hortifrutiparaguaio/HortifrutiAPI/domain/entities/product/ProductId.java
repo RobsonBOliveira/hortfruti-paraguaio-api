@@ -15,7 +15,7 @@ public class ProductId implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_seller", nullable = false)
-    private Seller seller; // Relacionamento movido para cá
+    private Seller seller;
 
     @Column(name = "id_product", nullable = false)
     private Long productId;

@@ -7,8 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductDTO {
-    private Long id;
-    private Long idSeller;
+    private Long productId;
     private String name;
     private String description;
     private double price;
@@ -16,8 +15,7 @@ public class ProductDTO {
 
 
     public ProductDTO(Product product) {
-        this.id = product.getId().getProductId();
-        this.idSeller = product.getId().getSeller().getId();
+        this.productId = product.getId().getProductId();
         this.name = product.getName();
         this.description = product.getDescription();
         this.price = product.getPrice();

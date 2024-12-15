@@ -13,6 +13,7 @@ public class ClientDTO {
     private String name;
     private boolean status;
 
+public ClientDTO() {}
 
     public ClientDTO(Client client) {
         this.id = client.getId();

@@ -14,7 +14,6 @@ public class ClientDTO {
     private boolean status;
 
 public ClientDTO() {}
-
     public ClientDTO(Client client) {
         this.id = client.getId();
         this.phone = client.getPhone();

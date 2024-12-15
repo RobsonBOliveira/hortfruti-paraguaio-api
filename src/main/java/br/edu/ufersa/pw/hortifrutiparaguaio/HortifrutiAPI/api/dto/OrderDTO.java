@@ -1,6 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
+
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
 import lombok.Getter;
 import lombok.Setter;

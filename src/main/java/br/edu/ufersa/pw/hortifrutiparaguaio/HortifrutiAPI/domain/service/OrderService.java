@@ -14,12 +14,12 @@ import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.Or
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,10 +39,10 @@ public class OrderService {
     }
 
     public List<OrderDTO> findAll() {
-        List<OrderDTO> orders = Orderrepository.findAll().stream()
-                .map(order -> new OrderDTO(order))
+        List<Order> orders = Orderrepository.findAll();
+        return orders.stream()
+                .map(OrderDTO::new)
                 .collect(Collectors.toList());
-        return orders;
     }
 
     public OrderDTO findById(Long id) {
@@ -50,7 +50,8 @@ public class OrderService {
         return result.map(OrderDTO::new).orElse(null);
     }
 
-    public OrderDTO createOrder(final OrderRequestDTO request) {
+    @Transactional
+    public ResponseEntity<?> createOrder(final OrderRequestDTO request) {
         if (request == null) {
             throw new IllegalArgumentException("Order request cannot be null");
         }
@@ -61,54 +62,36 @@ public class OrderService {
         }
 
         Order order = new Order();
-        order.setStatus("Testando");
+        order.setStatus("Só vendo");
         order.setOrderDate(new Date());
         order.setClient(client.get());
 
         Order savedOrder = Orderrepository.save(order);
 
-
-        System.out.println("Client found: " + client.get().getName());
-
-        System.out.println("Saved Order: " + savedOrder.getId());
-
-        //Log do id do produto
-        System.out.println("ProductID ProductId found: " + request.getCartProduct().getProduct().getId().getProductId());
-        System.out.println("ProductId SellerId found: " + request.getCartProduct().getProduct().getId().getSeller().getId());
-        // Log da quantidade do produto
-        System.out.println("Product quantity: " + request.getCartProduct().getQuantity());
-
-
-        ProductId id = new ProductId(request.getCartProduct().getProduct().getId().getSeller(), request.getCartProduct().getProduct().getId().getProductId());
-
-        Optional<Product> product = productRepository.findById(id);
-
-
-        Product product1 = new Product();
-
-        product1.setId(id);
-
-        CartProduct cartProduct = new CartProduct();
-        cartProduct.setProduct(product1);
-        cartProduct.setQuantity(request.getCartProduct().getQuantity());
-        cartProduct.setOrder(savedOrder);
-
-
-
-        cartProductRepository.save(cartProduct);
-
-        Order updatedOrder = Orderrepository.findById(savedOrder.getId())
-                .orElseThrow(() -> new IllegalStateException("Failed to fetch saved order"));
-
-        System.out.println("Updated Order: " + updatedOrder);
-
-        return new OrderDTO(updatedOrder);
+        for (CartProduct cartProduct : request.getCartProducts()) {
+            ProductId id = new ProductId(
+                    cartProduct.getProduct().getId().getSeller(),
+                    cartProduct.getProduct().getId().getProductId()
+            );
+            Optional<Product> productOpt = productRepository.findById(id);
+            if (productOpt.isEmpty()) {
+                throw new EntityNotFoundException("Product not found with ID: " + id);
+            }
+            Product product = productOpt.get();
+            CartProduct newCartProduct = new CartProduct();
+            newCartProduct.setProduct(product);
+            newCartProduct.setQuantity(cartProduct.getQuantity());
+            newCartProduct.setOrder(savedOrder);
+            cartProductRepository.save(newCartProduct);
+            cartProductRepository.flush();
+        }
+        return ResponseEntity.ok(new OrderDTO(savedOrder));
     }
 
 
     public OrderDTO deleteOrder(Long id) {
-        Optional<Order> result = Orderrepository.findById(id);
-        Order order = result.get();
+        Order order = Orderrepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Order not found with id: " + id));
         Orderrepository.delete(order);
         return new OrderDTO(order);
     }

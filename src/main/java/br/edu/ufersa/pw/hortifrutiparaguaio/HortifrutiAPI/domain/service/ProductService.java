@@ -3,7 +3,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.ProductDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.SellerDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.Product;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.ProductId;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.ProductRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public ProductDTO findById(Long id) {
+    public ProductDTO findById(ProductId id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Produto com ID " + id + " não encontrado"
@@ -52,17 +52,13 @@ public class ProductService {
                 );
             }
 
-            SellerDTO sellerDTO = sellerService.getSellerById(product.getSeller().getId());
+            SellerDTO sellerDTO = sellerService.getSellerById(product.getId().getSeller().getId());
             if (sellerDTO == null) {
                 throw new ResponseStatusException(
                         HttpStatus.BAD_REQUEST,
-                        "Vendedor com ID " + product.getSeller().getId() + " não encontrado"
+                        "Vendedor com ID " + product.getId().getSeller().getId() + " não encontrado"
                 );
             }
-
-            Seller seller = new Seller();
-            seller.setId(sellerDTO.getId());
-            product.setSeller(seller);
 
             productRepository.save(product);
             productDTOList.add(new ProductDTO(product));
@@ -73,12 +69,12 @@ public class ProductService {
 
 
     public ProductDTO delete(final Long id) {
-        Optional<Product> productOptional = productRepository.findById(id);
+        Optional<Product> productOptional = productRepository.findById(new ProductId(id));
         if (productOptional.isPresent()) {
             productRepository.delete(productOptional.get());
             return new ProductDTO(productOptional.get());
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     public ProductDTO update(Product product) {

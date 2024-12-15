@@ -1,6 +1,5 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,14 +9,9 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_seller", nullable = false)
-    private Seller seller;
+    @EmbeddedId
+    private ProductId id;
 
     @Column(name = "name", nullable = false)
     private String name;

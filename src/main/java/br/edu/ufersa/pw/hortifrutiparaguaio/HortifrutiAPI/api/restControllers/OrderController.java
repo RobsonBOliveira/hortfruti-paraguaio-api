@@ -1,6 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.OrderRequestDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +33,8 @@ public class OrderController {
     }
 
     @PostMapping("/orders/post")
-    public ResponseEntity<?> createOrder(@RequestBody Order order) {
-        return new ResponseEntity<>(orderService.createOrder(order), HttpStatus.CREATED);
+    public ResponseEntity<?> createOrder(@RequestBody OrderRequestDTO orderRequestDTO) {
+        return new ResponseEntity<>(orderService.createOrder(orderRequestDTO), HttpStatus.CREATED);
     }
 
 }

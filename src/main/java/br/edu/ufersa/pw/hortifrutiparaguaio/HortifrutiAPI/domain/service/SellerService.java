@@ -1,6 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.SellerDTO;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO.SellerDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Seller;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SellerRepository;
 import org.springframework.http.HttpStatus;

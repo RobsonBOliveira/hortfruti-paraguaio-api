@@ -1,6 +1,6 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.OrderRequestDTO;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO.OrderRequestDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

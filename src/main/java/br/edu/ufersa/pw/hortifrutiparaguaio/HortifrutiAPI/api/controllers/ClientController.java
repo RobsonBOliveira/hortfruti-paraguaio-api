@@ -1,4 +1,4 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Client;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.ClientService;

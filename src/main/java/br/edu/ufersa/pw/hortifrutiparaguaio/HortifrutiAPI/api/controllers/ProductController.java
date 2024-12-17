@@ -1,6 +1,6 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.ProductDTO;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO.ProductDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Product;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.ProductId;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.ProductService;

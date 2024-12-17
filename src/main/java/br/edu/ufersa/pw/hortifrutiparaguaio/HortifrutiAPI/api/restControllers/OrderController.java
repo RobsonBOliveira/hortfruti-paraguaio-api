@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("api/v1")
 public class OrderController {
@@ -41,5 +40,4 @@ public class OrderController {
     public ResponseEntity<?> teste(@PathVariable Long id){
         return new ResponseEntity<>(orderService.teste(id), HttpStatus.OK);
     }
-
 }

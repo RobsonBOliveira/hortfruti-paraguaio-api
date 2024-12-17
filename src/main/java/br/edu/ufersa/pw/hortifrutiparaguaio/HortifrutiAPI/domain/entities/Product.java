@@ -1,4 +1,4 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Client;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +13,6 @@ public class ClientDTO {
     private String name;
     private boolean status;
 
-public ClientDTO() {}
     public ClientDTO(Client client) {
         this.id = client.getId();
         this.phone = client.getPhone();

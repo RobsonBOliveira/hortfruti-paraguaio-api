@@ -1,10 +1,8 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.address;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.client.Client;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Table(name = "tb_address")
 @Entity

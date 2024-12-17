@@ -1,8 +1,5 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
-
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

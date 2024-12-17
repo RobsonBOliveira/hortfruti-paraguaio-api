@@ -2,8 +2,8 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.CartProductDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto.SaleDTO;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.sale.Sale;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Order;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Sale;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.CartProductRepository;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.OrderRepository;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.repositories.SaleRepository;

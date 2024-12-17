@@ -1,6 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.address.Address;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Address;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,5 +24,4 @@ public class AddressDTO {
         this.number = address.getNumber();
         this.zipcode = address.getZipcode();
     }
-
 }

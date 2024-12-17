@@ -1,6 +1,5 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.sale;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +11,7 @@ import java.util.Date;
 @Setter
 @Entity
 public class Sale {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sale")

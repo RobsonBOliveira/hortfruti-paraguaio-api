@@ -37,4 +37,9 @@ public class OrderController {
         return new ResponseEntity<>(orderService.createOrder(orderRequestDTO), HttpStatus.CREATED);
     }
 
+    @GetMapping("/teste/{id}")
+    public ResponseEntity<?> teste(@PathVariable Long id){
+        return new ResponseEntity<>(orderService.teste(id), HttpStatus.OK);
+    }
+
 }

@@ -12,13 +12,13 @@ import java.util.Date;
 
 public class SaleDTO {
     private Long id;
-    private Order order;
+    private OrderDTO order;
     private Date date;
     private double total;
 
     public SaleDTO(Sale sale) {
         this.id = sale.getIdSale();
-        this.order = sale.getOrder();
+        this.order = new OrderDTO(sale.getOrder());
         this.date = sale.getSaleDate();
         this.total = sale.getTotal();
     }

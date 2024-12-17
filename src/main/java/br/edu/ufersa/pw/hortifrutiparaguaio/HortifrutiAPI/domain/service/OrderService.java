@@ -62,7 +62,7 @@ public class OrderService {
         }
 
         Order order = new Order();
-        order.setStatus("Só vendo");
+        order.setStatus("PENDING");
         order.setOrderDate(new Date());
         order.setClient(client.get());
 
@@ -88,6 +88,9 @@ public class OrderService {
         return ResponseEntity.ok(new OrderDTO(savedOrder));
     }
 
+    public List<CartProductDTO> teste(Long id){
+        return new CartProductDTO().listCartProducts(cartProductRepository.findByOrderId(id));
+    }
 
     public OrderDTO deleteOrder(Long id) {
         Order order = Orderrepository.findById(id)

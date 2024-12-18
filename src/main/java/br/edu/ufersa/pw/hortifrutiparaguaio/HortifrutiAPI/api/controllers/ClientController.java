@@ -3,6 +3,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Client;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.ClientService;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +34,12 @@ public class ClientController {
     }
 
     @PostMapping("clients/post")
-    public ResponseEntity<?> createClient(@RequestBody Client client) {
+    public ResponseEntity<?> createClient(@RequestBody @Valid Client client) {
         return new ResponseEntity<>(service.createClient(client), HttpStatus.OK);
     }
 
     @PutMapping("/clients/put")
-    public ResponseEntity<?> updateClient(@RequestBody Client updateClient) {
+    public ResponseEntity<?> updateClient(@RequestBody @Valid Client updateClient) {
         return new ResponseEntity<>(service.updateClient(updateClient), HttpStatus.OK);
     }
 }

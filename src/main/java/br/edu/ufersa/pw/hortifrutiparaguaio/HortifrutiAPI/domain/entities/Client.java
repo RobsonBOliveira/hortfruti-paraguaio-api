@@ -1,6 +1,10 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,15 +26,20 @@ public class Client implements UserDetails {
     private Long id;
 
     @Column(name = "phone_number")
+    @NotEmpty(message = "O campo telefone não pode ser vazio!")
     private String phone;
 
     @Column(name = "email", unique = true)
+    @NotEmpty(message = "O campo email não pode ser vazio!")
+    @Email(message = "O email não é válido!")
     private String email;
 
     @Column(name = "name")
+    @NotEmpty(message = "O campo nome não pode estar vazio!")
     private String name;
 
     @Column(name="password")
+    @Size(min=8, message = "A senha deve ter no mínimo 8 caracteres!")
     private String password;
 
     @Column(name = "status")

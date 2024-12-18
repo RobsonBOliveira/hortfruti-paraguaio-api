@@ -2,6 +2,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Address;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.AddressService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,12 +33,12 @@ public class AddressController {
     }
 
     @PostMapping("/address/post")
-    public ResponseEntity<?> createAddress(@RequestBody Address address) {
+    public ResponseEntity<?> createAddress(@RequestBody @Valid Address address) {
         return new ResponseEntity<>(addressService.createAddress(address), HttpStatus.CREATED);
     }
 
     @PutMapping("/address/put")
-    public ResponseEntity<?> updateAddress(@RequestBody Address updateAddress) {
+    public ResponseEntity<?> updateAddress(@RequestBody @Valid Address updateAddress) {
         return new ResponseEntity<>(addressService.updateAddress(updateAddress), HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.exceptions;
 
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,19 @@ public class APIExceptionHandler {
         body.put("message", mensagem.toString().trim());
         body.put("timestamp", LocalDateTime.now());
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex) {
+        // Constrói a mensagem de erro
+        StringBuilder mensagem = new StringBuilder("Problema nos parâmetros enviados:");
+        ex.getConstraintViolations().forEach(error -> {mensagem.append(error.getMessage()).append("; ");});
+
+        // Estrutura a resposta
+        Map<String, Object> body = new HashMap<>();
+        body.put("status", HttpStatus.BAD_REQUEST.value());
+        body.put("error", "Problema nos parâmetros enviados!");
+        body.put("message", mensagem.toString().trim());
+        body.put("timestamp", LocalDateTime.now());
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 }

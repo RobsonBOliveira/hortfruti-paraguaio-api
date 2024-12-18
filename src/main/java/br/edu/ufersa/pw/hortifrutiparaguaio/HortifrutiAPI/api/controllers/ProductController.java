@@ -5,6 +5,7 @@ import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Produc
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.ProductId;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.ProductService;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/get")
-    public ResponseEntity<?> getProductById(@RequestBody ProductId productId) {
+    public ResponseEntity<?> getProductById(@RequestBody @Valid ProductId productId) {
         return new ResponseEntity<>(productService.findById(productId), HttpStatus.OK);
     }
 
@@ -37,13 +38,13 @@ public class ProductController {
     }
 
     @PostMapping("/products/post")
-    public ResponseEntity<?> addProducts(@RequestBody List<Product> products) {
+    public ResponseEntity<?> addProducts(@RequestBody @Valid List<Product> products) {
         List<ProductDTO> productDTOList = productService.createProducts(products);
         return new ResponseEntity<>(productDTOList, HttpStatus.CREATED);
     }
 
     @PutMapping("/products/put")
-    public ResponseEntity<?> updateProduct(@RequestBody Product updateProduct) {
+    public ResponseEntity<?> updateProduct(@RequestBody @Valid Product updateProduct) {
         return new ResponseEntity<>(productService.update(updateProduct), HttpStatus.OK);
     }
 }

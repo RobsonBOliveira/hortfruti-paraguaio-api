@@ -1,7 +1,7 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO;
 
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.order.Order;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Order;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +14,6 @@ public class OrderDTO {
     private ClientDTO client;
     private String status;
     private Date date;
-
 
     public OrderDTO(Order order) {
         this.id = order.getId();

@@ -1,6 +1,5 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.EqualsAndHashCode;

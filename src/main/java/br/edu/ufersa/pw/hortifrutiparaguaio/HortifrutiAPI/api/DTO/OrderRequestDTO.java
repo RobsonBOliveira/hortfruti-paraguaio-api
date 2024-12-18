@@ -1,6 +1,6 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.cart_product.CartProduct;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.CartProduct;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +11,6 @@ import java.util.List;
 @Setter
 @Getter
 public class OrderRequestDTO {
-
         private ClientDTO client;
         private List<CartProduct> cartProducts = new ArrayList<>();
-
 }

@@ -1,6 +1,6 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.seller.Seller;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Seller;
 import lombok.Getter;
 import lombok.Setter;
 

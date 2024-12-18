@@ -1,7 +1,6 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.restControllers;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 
-
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.sale.Sale;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Sale;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.SaleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1")
 public class SaleController {
-
 
     private final SaleService saleService;
 

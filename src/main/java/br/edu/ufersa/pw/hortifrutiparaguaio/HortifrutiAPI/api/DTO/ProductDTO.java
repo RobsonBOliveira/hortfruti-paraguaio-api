@@ -1,6 +1,6 @@
-package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.dto;
+package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO;
 
-import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.product.Product;
+import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Product;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +12,6 @@ public class ProductDTO {
     private String description;
     private double price;
     private int quantity;
-
 
     public ProductDTO(Product product) {
         this.productId = product.getId().getProductId();

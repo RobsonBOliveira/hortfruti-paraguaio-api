@@ -1,7 +1,7 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,14 +20,14 @@ public class Sale {
 
     @OneToOne
     @JoinColumn(name = "num_order", referencedColumnName = "num", nullable = false)
-    @NotEmpty(message = "O campo número de pedido não pode ser vazio!")
+    @NotNull(message = "O campo número de pedido não pode ser nulo!")
     private Order order;
 
     @Column(name = "sale_date")
-    @NotEmpty(message = "O campo data de venda não pode ser vazio!")
+    @NotNull(message = "O campo data de venda não pode ser nulo!")
     private Date saleDate;
 
     @Column(name = "total")
-    @NotEmpty(message = "O campo total não pode ser vazio!")
+    @NotNull(message = "O campo total não pode ser nulo!")
     private double total;
 }

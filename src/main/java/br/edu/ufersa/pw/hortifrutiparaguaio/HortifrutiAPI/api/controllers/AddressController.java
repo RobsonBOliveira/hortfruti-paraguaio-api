@@ -23,22 +23,22 @@ public class AddressController {
     }
 
     @RequestMapping("/address/{idClient}")
-    public ResponseEntity<?> getAddressById(@PathVariable Long idClient) {
+    public ResponseEntity<?> getAddressById(@Valid @PathVariable Long idClient) {
         return new ResponseEntity<>(addressService.findByClientId(idClient), HttpStatus.OK);
     }
 
     @DeleteMapping("/address/delete/{id}")
-    public ResponseEntity<?> deleteAddress(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAddress(@Valid @PathVariable Long id) {
         return new ResponseEntity<>(addressService.delete(id), HttpStatus.OK);
     }
 
     @PostMapping("/address/post")
-    public ResponseEntity<?> createAddress(@RequestBody @Valid Address address) {
+    public ResponseEntity<?> createAddress(@Valid @RequestBody Address address) {
         return new ResponseEntity<>(addressService.createAddress(address), HttpStatus.CREATED);
     }
 
     @PutMapping("/address/put")
-    public ResponseEntity<?> updateAddress(@RequestBody @Valid Address updateAddress) {
+    public ResponseEntity<?> updateAddress(@Valid @RequestBody Address updateAddress) {
         return new ResponseEntity<>(addressService.updateAddress(updateAddress), HttpStatus.OK);
     }
 }

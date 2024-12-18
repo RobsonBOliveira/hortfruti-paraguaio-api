@@ -24,22 +24,22 @@ public class ClientController {
     }
 
     @GetMapping("/clients/{id}")
-    public ResponseEntity<?> getClientById(@PathVariable Long id) {
+    public ResponseEntity<?> getClientById(@Valid @PathVariable Long id) {
         return new ResponseEntity<>(service.getClientById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/clients/delete/{id}")
-    public ResponseEntity<?> deleteClient(@PathVariable Long id) {
+    public ResponseEntity<?> deleteClient(@Valid @PathVariable Long id) {
         return new ResponseEntity<>(service.deleteClientById(id), HttpStatus.OK);
     }
 
     @PostMapping("clients/post")
-    public ResponseEntity<?> createClient(@RequestBody @Valid Client client) {
+    public ResponseEntity<?> createClient(@Valid @RequestBody Client client) {
         return new ResponseEntity<>(service.createClient(client), HttpStatus.OK);
     }
 
     @PutMapping("/clients/put")
-    public ResponseEntity<?> updateClient(@RequestBody @Valid Client updateClient) {
+    public ResponseEntity<?> updateClient(@Valid @RequestBody Client updateClient) {
         return new ResponseEntity<>(service.updateClient(updateClient), HttpStatus.OK);
     }
 }

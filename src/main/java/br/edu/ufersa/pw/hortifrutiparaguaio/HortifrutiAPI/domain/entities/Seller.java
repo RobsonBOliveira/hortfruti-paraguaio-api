@@ -1,6 +1,5 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -12,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Seller{
+public class Seller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +19,12 @@ public class Seller{
     private Long id;
 
     @Column(name = "cnpj", unique = true)
-    @Size(min = 18, max = 18, message = "CNPJ deve ter 18 caracteres!")
+    @Size(min = 18, max = 18, message = "CNPJ deve ter exatamente 18 caracteres!")
     private String cnpj;
 
     @NotEmpty(message = "O campo email não pode ser vazio!")
     @Email(message = "O email não é válido!")
-    @Column (name ="email", unique = true)
+    @Column(name = "email", unique = true)
     private String email;
 
     @NotEmpty(message = "O campo nome não pode ser vazio!")
@@ -33,7 +32,7 @@ public class Seller{
     private String name;
 
     @Column(name = "password")
-    @Size(min=8, message = "A senha deve ter no mínimo 8 caracteres!")
+    @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres!")
     private String password;
 
     @Column(name = "status")

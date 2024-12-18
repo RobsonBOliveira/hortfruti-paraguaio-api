@@ -17,7 +17,7 @@ public class Product {
     private ProductId id;
 
     @Column(name = "name", nullable = false)
-    @NotEmpty(message = "O campo nome produto não pode ser vazio!")
+    @NotEmpty(message = "O campo nome do produto não pode ser vazio!")
     private String name;
 
     @Column(name = "description")
@@ -25,9 +25,11 @@ public class Product {
 
     @Column(name = "price", nullable = false)
     @NotNull(message = "O campo preço não pode ser vazio!")
+    @Min(value = 0, message = "O preço deve ser maior ou igual a 0.")
     private double price;
 
     @Column(name = "quantity", nullable = false)
     @NotNull(message = "O campo quantidade não pode ser vazio!")
+    @Min(value = 0, message = "A quantidade deve ser maior ou igual a 0.")
     private int quantity;
 }

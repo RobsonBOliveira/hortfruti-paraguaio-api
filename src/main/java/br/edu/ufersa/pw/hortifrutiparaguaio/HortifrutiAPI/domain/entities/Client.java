@@ -1,12 +1,8 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.*;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Client implements UserDetails {
 
     @Id
@@ -25,29 +24,37 @@ public class Client implements UserDetails {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "phone_number")
-    @NotEmpty(message = "O campo telefone não pode ser vazio!")
+    @Column(name = "phone_number", nullable = false)
+    @NotBlank(message = "O número de telefone é obrigatório.")
+    @Pattern(regexp = "\\(\\d{2}\\)\\d{4,5}-\\d{4}", message = "Formato inválido para número de telefone. Exemplo: (99)99999-9999.")
     private String phone;
 
-    @Column(name = "email", unique = true)
-    @NotEmpty(message = "O campo email não pode ser vazio!")
-    @Email(message = "O email não é válido!")
+    @Column(name = "email", unique = true, nullable = false)
+    @NotBlank(message = "O email é obrigatório.")
+    @Email(message = "Formato inválido para email.")
     private String email;
 
-    @Column(name = "name")
-    @NotEmpty(message = "O campo nome não pode estar vazio!")
+    @Column(name = "name", nullable = false)
+    @NotBlank(message = "O nome é obrigatório.")
+    @Size(min = 3, max = 50, message = "O nome deve ter entre 3 e 50 caracteres.")
     private String name;
 
-    @Column(name="password")
-    @Size(min=8, message = "A senha deve ter no mínimo 8 caracteres!")
+    @Column(name = "password", nullable = false)
+    @NotBlank(message = "A senha é obrigatória.")
+    @Size(min = 6, message = "A senha deve ter pelo menos 6 caracteres.")
     private String password;
 
     @Column(name = "status")
     private boolean status;
 
+    @Column(name = "role", nullable = false)
+    @NotBlank(message = "O papel (role) é obrigatório.")
+    @Pattern(regexp = "^(USER|ADMIN)$", message = "O papel (role) deve ser USER ou ADMIN.")
+    private String role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_CLIENT"));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
     }
 
     @Override
@@ -57,21 +64,21 @@ public class Client implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return status;
     }
 }

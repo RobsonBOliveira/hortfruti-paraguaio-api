@@ -23,22 +23,22 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{id}")
-    public ResponseEntity<?> getOrderById(@PathVariable Long id) {
+    public ResponseEntity<?> getOrderById(@Valid @PathVariable Long id) {
         return new ResponseEntity<>(orderService.findById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/orders/delete/{id}")
-    public ResponseEntity<?> deleteOrder(@PathVariable Long id) {
+    public ResponseEntity<?> deleteOrder(@Valid @PathVariable Long id) {
     return new ResponseEntity<>(orderService.deleteOrder(id), HttpStatus.OK);
     }
 
     @PostMapping("/orders/post")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderRequestDTO orderRequestDTO) {
+    public ResponseEntity<?> createOrder(@Valid @RequestBody OrderRequestDTO orderRequestDTO) {
         return new ResponseEntity<>(orderService.createOrder(orderRequestDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/teste/{id}")
-    public ResponseEntity<?> teste(@PathVariable @Valid Long id){
+    public ResponseEntity<?> teste(@Valid @PathVariable Long id){
         return new ResponseEntity<>(orderService.teste(id), HttpStatus.OK);
     }
 }

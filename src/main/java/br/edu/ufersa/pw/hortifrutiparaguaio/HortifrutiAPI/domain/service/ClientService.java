@@ -32,6 +32,11 @@ public class ClientService{
         return result.map(ClientDTO::new).orElse(null);
     }
 
+    public ClientDTO findByEmail(final String email) {
+        Optional<Client> result = repository.findByEmail(email);
+        return result.map(ClientDTO::new).orElse(null);
+    }
+
     public ClientDTO createClient(final Client client) {
         Optional<Client> result = repository.findByEmail(client.getEmail());
         if (result.isPresent()) {

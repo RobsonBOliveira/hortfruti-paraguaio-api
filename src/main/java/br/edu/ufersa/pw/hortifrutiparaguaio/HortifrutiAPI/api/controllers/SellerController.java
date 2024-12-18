@@ -2,6 +2,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities.Seller;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.SellerService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +34,12 @@ public class SellerController {
     }
 
     @PostMapping("/sellers/post")
-    public ResponseEntity<?> createSeller(@RequestBody Seller seller) {
+    public ResponseEntity<?> createSeller(@RequestBody @Valid Seller seller) {
         return new ResponseEntity<>(service.createSeller(seller), HttpStatus.OK);
     }
 
     @PutMapping("/sellers/put")
-    public ResponseEntity<?> updateSeller(@RequestBody Seller updateSeller) {
+    public ResponseEntity<?> updateSeller(@RequestBody @Valid Seller updateSeller) {
         return new ResponseEntity<>(service.updateSeller(updateSeller), HttpStatus.OK);
     }
 }

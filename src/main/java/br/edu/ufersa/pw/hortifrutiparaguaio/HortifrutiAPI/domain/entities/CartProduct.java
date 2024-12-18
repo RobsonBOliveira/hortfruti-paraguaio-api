@@ -1,6 +1,7 @@
 package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,5 +27,6 @@ public class CartProduct {
     private Product product;
 
     @Column(name = "quantity", nullable = false)
+    @NotEmpty(message = "O campo quantidade não pode ser vazio!")
     private Long quantity;
 }

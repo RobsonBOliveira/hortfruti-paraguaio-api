@@ -2,6 +2,7 @@ package br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.controllers;
 
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.api.DTO.OrderRequestDTO;
 import br.edu.ufersa.pw.hortifrutiparaguaio.HortifrutiAPI.domain.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,12 +33,12 @@ public class OrderController {
     }
 
     @PostMapping("/orders/post")
-    public ResponseEntity<?> createOrder(@RequestBody OrderRequestDTO orderRequestDTO) {
+    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderRequestDTO orderRequestDTO) {
         return new ResponseEntity<>(orderService.createOrder(orderRequestDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/teste/{id}")
-    public ResponseEntity<?> teste(@PathVariable Long id){
+    public ResponseEntity<?> teste(@PathVariable @Valid Long id){
         return new ResponseEntity<>(orderService.teste(id), HttpStatus.OK);
     }
 }

@@ -21,12 +21,12 @@ public class SaleController {
     }
 
     @PostMapping("/sale/post")
-    public ResponseEntity<?> createSale(@RequestBody @Valid Sale sale) {
+    public ResponseEntity<?> createSale(@RequestBody Sale sale) {
         return new ResponseEntity<>(saleService.saveSale(sale), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Sale> getSaleById(@PathVariable Long id) {
+    public ResponseEntity<Sale> getSaleById(@Valid @PathVariable Long id) {
         Optional<Sale> sale = saleService.getSaleById(id);
         return sale.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());

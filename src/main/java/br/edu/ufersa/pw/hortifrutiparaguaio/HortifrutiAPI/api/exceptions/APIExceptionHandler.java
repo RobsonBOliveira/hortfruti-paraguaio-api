@@ -26,7 +26,7 @@ public class APIExceptionHandler {
         // Estrutura a resposta
         Map<String, Object> body = new HashMap<>();
         body.put("status", HttpStatus.BAD_REQUEST.value());
-        body.put("error", "Problema nos parâmetros enviados!");
+        body.put("error", "Problema nos parâmetros enviado!");
         body.put("message", mensagem.toString().trim());
         body.put("timestamp", LocalDateTime.now());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);

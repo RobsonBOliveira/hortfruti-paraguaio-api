@@ -28,23 +28,23 @@ public class ProductController {
     }
 
     @GetMapping("/products/get")
-    public ResponseEntity<?> getProductById(@RequestBody @Valid ProductId productId) {
+    public ResponseEntity<?> getProductById(@Valid @RequestBody ProductId productId) {
         return new ResponseEntity<>(productService.findById(productId), HttpStatus.OK);
     }
 
     @DeleteMapping("/products/delete/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+    public ResponseEntity<?> deleteProduct(@Valid @PathVariable Long id){
         return new ResponseEntity<> (productService.delete(id), HttpStatus.OK);
     }
 
     @PostMapping("/products/post")
-    public ResponseEntity<?> addProducts(@RequestBody @Valid List<Product> products) {
+    public ResponseEntity<?> addProducts(@Valid @RequestBody List<Product> products) {
         List<ProductDTO> productDTOList = productService.createProducts(products);
         return new ResponseEntity<>(productDTOList, HttpStatus.CREATED);
     }
 
     @PutMapping("/products/put")
-    public ResponseEntity<?> updateProduct(@RequestBody @Valid Product updateProduct) {
+    public ResponseEntity<?> updateProduct(@Valid @RequestBody Product updateProduct) {
         return new ResponseEntity<>(productService.update(updateProduct), HttpStatus.OK);
     }
 }
